@@ -1,22 +1,24 @@
-// Rock Paper Scisor Game
-
-// var playerSelection = prompt('tu jugada (piedra - papel - tijera):');
-// console.log(playerSelection);
-
-function plays() {
-    let options = ['rock', 'paper', 'scissors']
-    let randNum = Math.round(Math.random()*2)
-    return options[randNum]
-}
-
+const scissorsButton = document.querySelector('#scissors');
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const contador =  document.querySelector('#contador')
+const jugada = document.querySelector('#jugada')
+const decisionFinal = document.querySelector('#decisionFinal')
 var counterComputer = 0;
 var counterPlayer = 0;
 
 
-function playRound(playerSelection, computerSelection) {
-    computerSelection = plays();
-    playerSelection = prompt('tu jugada (rock - paper - scissors):');
+function computerChoice() {
+    let options = ['rock', 'paper', 'scissors']
+    let randNum = Math.round(Math.random()*2)
+    return options[randNum]
+}
+function playRound() {
+    decisionFinal.textContent = 'a jugar!'
+    computerSelection = computerChoice();
     if ( computerSelection == playerSelection) {
+        decisionFinal.textContent = 'empate!! - otra vez!'
+        
         counterComputer += 0
         counterPlayer += 0
     } else if (playerSelection == 'rock') {
@@ -38,28 +40,46 @@ function playRound(playerSelection, computerSelection) {
             counterPlayer += 1
         }
     }
+
+
+    
+    jugada.textContent = `jugada computador ${computerSelection} jugada humano ${playerSelection}`
+    contador.textContent = `puntaje maquina: ${counterComputer} vs puntaje humano ${counterPlayer}`
+    console.log(counterComputer, counterPlayer);
+
+    if (counterPlayer >=5) {
+        console.log('ganador el humano');
+        decisionFinal.textContent = 'ganador el humano'
+        counterPlayer = 0
+        counterComputer = 0
+        
+    } else if (counterComputer >= 5) {
+        console.log('ganadora la maquina');
+        decisionFinal.textContent = 'ganadora la maquina'
+        counterPlayer = 0
+        counterComputer = 0
+    }
     
     
 }
+
 
 function game() {
-    while (counterComputer <= 5) {
-    playRound()
-    console.log(`contador maquina: ${counterComputer} contador persona: ${counterPlayer}`)
-    if (counterComputer == 5) {
-        return 'la maquina llego a 5 primero'
-    } else if (counterPlayer == 5) {
-        return 'player llego a 5'
-    }
-    }
-
-    // if (counterComputer > counterPlayer) {
-    //     return alert('Gana la maquina esta vez!!')
-    // } else if (counterComputer < counterPlayer){
-    //    return  alert('Gana el usuario por esta vez!!')
-    // } else {
-    //     return alert('its a tie')
-    // }
+   
+    
+    scissorsButton.addEventListener('click', function() {
+        playerSelection = 'scissors'
+        playRound()
+    })
+    rockButton.addEventListener('click', function() {
+        playerSelection = 'rock'
+        playRound()        
+    })
+    paperButton.addEventListener('click', function() {
+        playerSelection = 'paper'
+        playRound()
+    })
+    
 }
 
-console.log(game());
+game()
