@@ -1,0 +1,75 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: repeat(autofit,1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+    height: 75vh;
+    width: 100%;
+    
+}
+
+.contenedor-botones-imagenes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+    justify-items: center;
+
+
+}
+
+.contenedor-icono-boton {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    
+    
+    
+}
+
+.contenedor-boton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.header {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+
+}
+
+.nombre-juego {
+    text-align: center;
+}
+
+.boton-iniciar-juego {
+    align-content: center;
+    justify-content: center;
+}
+
+
+.img-header {
+    width: 100%;
+    height: auto;
+}
+
+.resultados {
+    text-align: center;
+}
+
+.display-none {
+    display: none;
+}

@@ -7,6 +7,10 @@ const decisionFinal = document.querySelector('#decisionFinal')
 var counterComputer = 0;
 var counterPlayer = 0;
 
+function showStartButton() {
+    
+}
+
 
 function computerChoice() {
     let options = ['rock', 'paper', 'scissors']
@@ -14,50 +18,60 @@ function computerChoice() {
     return options[randNum]
 }
 function playRound() {
-    decisionFinal.textContent = 'a jugar!'
     computerSelection = computerChoice();
     if ( computerSelection == playerSelection) {
-        decisionFinal.textContent = 'empate!! - otra vez!'
-        
-        counterComputer += 0
-        counterPlayer += 0
+        decisionFinal.textContent = 'Empate'
+        decisionFinal.removeAttribute('alert')
+        decisionFinal.setAttribute('class', 'display-3 alert alert-secondary')
     } else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
             counterComputer += 1
+            decisionFinal.textContent = 'punto para la maquina'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-warning')
+            
         } else {
             counterPlayer += 1
+            decisionFinal.textContent = 'punto para ti!'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-success')
         }
     } else if (playerSelection == 'paper') {
         if (computerSelection == 'scissors') {
             counterComputer += 1
+            decisionFinal.textContent = 'punto para la maquina'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-warning')
         } else {
             counterPlayer += 1
+            decisionFinal.textContent = 'punto para ti!'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-success')
         }
     } else if (playerSelection == 'scissors') {
         if (computerSelection == 'rock') {
             counterComputer += 1
+            decisionFinal.textContent = 'punto para la maquina'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-warning')
         } else {
             counterPlayer += 1
+            decisionFinal.textContent = 'punto para ti!'
+            decisionFinal.setAttribute('class', 'display-3 alert alert-success')
         }
     }
 
 
     
-    jugada.textContent = `jugada computador ${computerSelection} jugada humano ${playerSelection}`
-    contador.textContent = `puntaje maquina: ${counterComputer} vs puntaje humano ${counterPlayer}`
+    jugada.textContent = `La jugada fue  =>  Maquina: ${computerSelection} y Humano: ${playerSelection}`
+    contador.textContent = `Maquina: ${counterComputer} - Humano: ${counterPlayer}`
     console.log(counterComputer, counterPlayer);
 
     if (counterPlayer >=5) {
-        console.log('ganador el humano');
-        decisionFinal.textContent = 'ganador el humano'
+        decisionFinal.textContent = 'Ganador el humano!'
         counterPlayer = 0
         counterComputer = 0
         
     } else if (counterComputer >= 5) {
-        console.log('ganadora la maquina');
         decisionFinal.textContent = 'ganadora la maquina'
         counterPlayer = 0
         counterComputer = 0
+        
     }
     
     
@@ -65,7 +79,7 @@ function playRound() {
 
 
 function game() {
-   
+    
     
     scissorsButton.addEventListener('click', function() {
         playerSelection = 'scissors'
@@ -81,5 +95,6 @@ function game() {
     })
     
 }
+
 
 game()
